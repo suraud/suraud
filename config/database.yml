@@ -1,0 +1,30 @@
+default: &default
+  adapter: mysql2
+  charset: utf8mb4
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: <%= ENV['RE_DB_NAME_DEV'] %>
+  username: <%= ENV['RE_DB_USERNAME'] %>
+  password: <%= ENV['RE_DB_PASSWORD'] %>
+  host: <%= ENV['RE_DB_HOSTNAME'] %>
+  port: <%= ENV['RE_DB_PORT'] %>
+
+test:
+  <<: *default
+  database: <%= ENV['RE_DB_NAME_TEST'] %>
+  username: <%= ENV['RE_DB_USERNAME'] %>
+  password: <%= ENV['RE_DB_PASSWORD'] %>
+  host: <%= ENV['RE_DB_HOSTNAME'] %>
+  port: <%= ENV['RE_DB_PORT'] %>
+
+production:
+  <<: *default
+  database: <%= ENV['RE_DB_NAME'] %>
+  username: <%= ENV['RE_DB_USERNAME'] %>
+  password: <%= ENV['RE_DB_PASSWORD'] %>
+  host: <%= ENV['RE_DB_HOSTNAME'] %>
+  port: <%= ENV['RE_DB_PORT'] %>
